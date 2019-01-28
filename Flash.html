@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeGym</title>
+</head>
+<body>
+<script>
+    function Battery() {
+        this.energy;
+        this.setEnergy = setEnergy;
+        this.getEnergy = getEnergy;
+        this.decreaseEnergy = decreaseEnergy;
+
+    }
+    function setEnergy(energy) {
+        this.energy = energy;
+    }
+    function getEnergy() {
+        return this.energy;
+    }
+    function decreaseEnergy() {
+        if (this.energy > 0) {
+            this.energy --;
+        }
+    }
+    
+    
+    function FlashLamp() {
+        this.status;
+        this.battery;
+        this.setBattery = setBattery;
+        this.getBatteryInf = getBatteryInf;
+        this.light = light;
+        this.turnOn = turnOn;
+        this.turnOff = turnOff;
+    }
+    
+    function setBattery(battery) {
+        this.battery= battery;
+    }
+    function getBatteryInf() {
+        return this.battery.getEnergy();
+    }
+    function light() {
+        if (this.status) {
+            alert("Lighting");
+        }else {
+            alert("Not lighting");
+        }
+    }
+    function turnOn() {
+        this.status = true;
+    }
+    function turnOff() {
+        this.status = false;
+    }
+
+    let battery = new Battery();
+    battery.setEnergy(10);
+
+    let flashLamp = new FlashLamp();
+    flashLamp.setBattery(battery);
+    document.write("Battery info:" + flashLamp.getBatteryInf() + "<br/>");
+    flashLamp.light();
+    battery.decreaseEnergy();
+    document.write("Turn on<br/>")
+    flashLamp.turnOn();
+    flashLamp.light();
+    document.write("Battery info:" + flashLamp.getBatteryInf() + "<br/>");
+    battery.decreaseEnergy();
+    document.write("Turn off<br/>")
+    flashLamp.turnOff();
+    flashLamp.light();
+    document.write("Battery info:" + flashLamp.getBatteryInf() + "<br/>");
+</script>
+</body>
+</html>
